@@ -74,9 +74,8 @@ else
 fi
 alias h='history | grep'
 
+# Define colors 
 eval $( dircolors -b $HOME/.LS_COLORS )
-
-
 BROWN='\033[0;33;49m'
 CYAN='\033[0;36;49m'
 RED='\033[1;31;49m'
@@ -125,8 +124,17 @@ is_mounted() {
         echo -e "$RED(*)$RESET"
 }
 
+## Configure Bash history
+export HISTCONTROL=ignoreboth:erasedups      # Avoid duplicate entries in .bash_history
+export HISTIGNORE="h *:mc:ls:df:du:bc"       # Commands which are ignored
+export HISTSIZE=5000                         # Number of commands that are stored in memory
+export HISTFILESIZE=$HISTSIZE                # Number of commands that are allowed in the history file
 
-# bash prompt with Subversion, Git¸ Mercurial
+# Does not work in Solaris
+export GREP_OPTIONS='--color=auto'
+
+
+# bash prompt with Subversion, Git, Mercurial
 #PS1="\[$GREEN\][\t]\[$RED\][\[$CYAN\]\u@\h:\[$YELLOW\]\w\[$RED\]]\[$PURPLE\] $ \[$RESET\]"
 #PS1="\n\[$GREEN\][\D{%H:%M.%S %a, %d %b}] \[$YELLOW\]\w \[$PURPLE\]\$(vcs_branch)\n\[$CYAN\][\u@\h]\[$PURPLE\] $ \[$RESET\]" 
 PS1="\n\[$GREEN\][\D{%H:%M.%S %a, %d %b}] $(is_mounted) \[$YELLOW\]\w \n\[$CYAN\][\u@\h]\[$PURPLE\] $ \[$RESET\]" 
@@ -135,3 +143,7 @@ export PS1
 
 #export PS1="\n\[\033[32m\][\D{%H:%M.%S %a, %d %b}] \[\033[33m\]\w \n\[\033[36m\][\u@\h]\[\033[35m\] $ \[\033[0m\]"
 
+
+#echo ${PATH}:/usr/bin | perl -aF: -ple'$_=join":",grep{!$o{$_}++}@F'
+#PATH=`awk -F: '{for(i=1;i<=NF;i++){if(!a[$i]++)printf s$i;s=":"}}'<<<$PATH`
+#export SVN_EDITOR='vim -c "new|silent r! svn diff" -c "set syntax=diff buftype=nofile" -c "silent 1|wincmd j"'
