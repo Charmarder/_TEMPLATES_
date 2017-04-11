@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Шаблон для верстки №U2 - 3-колоночный тянущийся макет (тянется все)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="css/common.css" type="text/css">
+<!--[if lte IE 6]>
+	<link rel="stylesheet" href="css/lteie6.css" type="text/css">
+<![endif]-->
+<style type="text/css">
+html, body {
+  height:100%;
+  background: #BBB;
+}
+body {
+	color: #000;
+	font: 14px Arial, Tahoma, sans-serif;
+}
+/* #all нужен для применения IE6 min/max width хака (в файле css/lteie6.css), для body не работает */
+#all {
+	margin: 0 auto;
+	min-width: 800px;
+	max-width: 1100px;
+    min-height: 100%;
+    height: auto !important;
+    height: 100%; /* IE6 min-height hack */
+}
+
+/* IE6: для правильной работы отрицательных margin у float-ов, контейнеру нужно установить width или height */
+.container {
+    width: 100%;
+}
+.one {
+    background: url(img/U2/1000-3000.gif) 33% 0 repeat-y;
+}
+.two {
+    background: url(img/U2/2000-3000.gif) 67% 0 repeat-y;
+}
+.column {
+    height: 100px;
+    float: left;
+}
+/* IE6: double margin-left у первого float: left*/
+#wrapper {
+	width: 100%;
+    height: auto;
+}
+#main{
+    margin-left: 33%;
+    margin-right: 33%;
+	background: #DFD;
+}
+#sidebar1 {
+    width: 33%;
+    margin-left: -100%;
+	background: #FEB;
+}
+#sidebar2 {
+    width: 33%;
+    margin-left: -33%;
+	background: #FEB;
+}
+
+#header {
+	height: 100px; 
+	background: #DFDFDF;
+	text-align: center;
+	border-bottom: 1px solid #FFF;
+}
+#footer {
+	height: 80px;
+	background: #FCC;
+	border: 1px solid #FFF;
+}
+</style>
+</head>
+<body>
+<div id="all">
+
+<div class="container one">
+<div class="container two">
+    <div id="header">
+      <h4>Шаблон для верстки №U2 - 3-колоночный тянущийся макет (тянется все)</h4>
+    </div>
+    
+    <div id="wrapper" class="column">
+        <div id="main">
+            <h2>Контент (#main)</h2>
+            <ul>
+            <li>3 колонки (все тянутся), легко переделывается, чтоб тянулась только середина или все были фиксированные;</li>
+            <li>заданы минимальная/ максимальная ширина страницы;</li>
+            <li>футер НЕ прижимается к низу страницы, если контента меньше, чем высота экрана (в шаблоне U1 прижиматся)</li>
+            <li>колонки выравнены по высоте (<a href="http://meyerweb.com/eric/thoughts/2004/09/03/sliding-faux-columns/" title="Sliding Faux Columns">Sliding Faux Columns</a>), независимо от количества контента;</li>
+            <li>контент грузится раньше боковых колонок;</li>
+            <li>блочная верстка (на DIV’aх);</li>
+            <li>валидный HTML (HTML 4.01 Strict);</li>
+            <li>валидный CSS (CSS level 2.1).</li>
+            </ul>
+            <br><br>
+        </div>
+    </div>
+	<div id="sidebar1" class="column">
+		<p>Боковая колонка (#sidebar1)</p>
+		<br><br>
+	</div>
+	<div id="sidebar2" class="column">
+		<p>Боковая колонка (#sidebar2)</p>
+		<br><br>
+	</div>
+	<div class="clear"></div>
+</div>
+</div>
+
+<div id="footer">
+	<p>Подвал (#footer)</p>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Шаблон для верстки №U1 - 3-колоночный макет (боковые - фиксированные, средняя - тянется)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="css/common.css" type="text/css">
+<!--[if lte IE 6]>
+	<link rel="stylesheet" href="css/lteie6.css" type="text/css">
+<![endif]-->
+<style type="text/css">
+/*--- Main Layout -------------------*/
+html, body {
+	height: 100%;
+    background: #BBB;
+}
+body {
+	color: #000;
+	font: 14px Arial, Tahoma, sans-serif;
+}
+/* #all нужен для применения IE6 min/max width хака (в файле css/lteie6.css), для body не работает */
+#all {
+    position: relative;
+    z-index: 0;
+	margin: 0 auto;
+	min-width: 800px;
+	max-width: 1100px;
+    min-height: 100%;
+    height: auto !important;
+    height: 100%; /* IE6 min-height hack */
+}
+#bg1 {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    background: url(img/u1/body_bg1.gif)  0 0 repeat-y;
+}
+#bg2 {
+    position: absolute;
+    height: 100%;
+    right: 0;
+    width: 262px;
+    z-index: -1;
+    background: url(img/u1/body_bg2.gif) right 0 repeat-y;
+}
+
+/* IE6: для правильной работы отрицательных margin у float-ов, контейнеру нужно установить width или height */
+.container {
+    width: 100%;
+/*    overflow: hidden !important;
+    overflow: visible; /* IE6 overflow: hidden hack*/
+/*    border-left: 1px solid #FFF;
+    border-right: 1px solid #FFF;*/
+}
+.one {
+    background: url(img/u1/body_bg1.gif) repeat-y scroll 0 0;
+}
+.two {
+    background: url(img/u1/body_bg2.gif) repeat-y scroll right 0;
+}
+.column {
+	float: left;
+	padding-bottom: 82px;   /* footer fullheight */
+/*	padding-bottom: 32767px;
+	margin-bottom: -32767px;    /* еще один способ вертикально выравнивания колонок (глюки с якорями) */
+}
+/* IE6: double margin-left у первого float: left*/
+#wrapper {
+	width: 100%;
+}
+#main {
+	margin-left: 262px;
+	margin-right: 262px;
+	background: #DFD;
+}
+#sidebar1 {
+	width: 250px;
+	margin-left: -100%;
+	padding-left: 6px; /* border width */
+/*	border-right: 6px solid #39C;
+	border-left: 6px solid #39C !important;
+	border-left: 8px solid #39C; /* fix for IE6 */
+/*	background: #FEB;*/
+}
+#sidebar2 {
+	width: 250px;
+	margin-left: -256px;
+/*	background: #FEB;
+/*	border-right: 6px solid #39C;
+	border-left: 6px solid #39C;*/
+}
+
+#header {
+	height: 100px; 
+	background: #DFDFDF;
+	text-align: center;
+	border-bottom: 1px solid #FFF;
+}
+#footer {
+	position: absolute;
+	bottom: 0;
+/*	clear: both;
+    margin-top: -82px;*/
+	height: 80px;
+	width: 100%;
+	background: #FCC;
+	border: 1px solid #FFF;
+}
+</style>
+</head>
+<body><div id="all">
+
+<div id="bg1"></div>
+<div id="bg2"></div>
+
+<div class="container one">
+<div class="container two">
+	<div id="header">
+		<h4>Шаблон для верстки №U1 - 3-колоночный макет (боковые - фиксированные, средняя - тянется)</h4>
+	</div>
+	<div id="wrapper" class="column">
+		<div id="main">
+            <h2>Контент (#main)</h2>
+			<ul>
+            <li>3 колонки (боковые - фиксированные, средняя - тянется), легко переделывается, чтоб все тянулись или были фиксированные;</li>
+            <li>заданы минимальная/максимальная ширина страницы;</li>
+            <li>футер прижимается к низу страницы, если контента меньше, чем высота экрана (в шаблоне U2 не прижиматся)</li>
+            <li>колонки выравнены по высоте (<a href="http://meyerweb.com/eric/thoughts/2004/09/03/sliding-faux-columns/" title="Sliding Faux Columns">Sliding Faux Columns</a>), независимо от количества контента;</li>
+            <li>контент грузится раньше боковых колонок;</li>
+            <li>блочная верстка (на DIV’aх);</li>
+            <li>валидный HTML (HTML 4.01 Strict);</li>
+            <li>валидный CSS (CSS level 2.1).</li>
+			</ul>
+			<br><br>
+		</div>
+	</div>
+	<div id="sidebar1" class="column">
+		<p>Боковая колонка (#sidebar1)</p>
+		<br><br>
+	</div>
+	<div id="sidebar2" class="column">
+		<p>Боковая колонка (#sidebar2)</p>
+		<br><br>
+	</div>
+	<div class="clear"></div>
+</div>
+</div>
+
+
+<div id="footer">
+	<p>Подвал</p>
+</div>
+
+</div></body>
+</html>

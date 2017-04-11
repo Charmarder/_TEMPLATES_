@@ -1,0 +1,16 @@
+div.wrapper {
+	overflow: hidden;
+	zoom: 1;
+	min-width: 165px;
+}
+
+div.container {
+	zoom: 1;
+	word-spacing: -0.25em; /* фаза два Ч убираем пробелы (было посчитано, что при 1em = 16px пробел длиной 4px Ч†0.25em) */
+}
+
+div.block {
+	display: -moz-inline-box; display: inline-block; *zoom: 1; *display: inline; /* фаза 1 Ч†добавл€ем inline-block */
+	word-spacing: normal; /* фаза два Ч†восстанавливаем убранный пробел в блоках */
+	vertical-align: top; /* IE6 некорректно позиционирует без этого */
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><style type="text/css" id="SEOBar-noindex-highlight">noindex a {border: 1px dashed red !important;}</style>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Vertical-align elements of unknown height</title>
+<style type="text/css">
+.imageholder {
+	position:relative;
+	display:table;
+	height: 449px;
+	width: 615px;
+	vertical-align: middle; 
+	text-align: center;
+	border: 1px solid #CCCCCC;
+	background:red;
+	text-align:center;
+	*overflow:hidden;
+	*display:block;
+}
+.inner {
+	width:100%;
+	display:table-cell;
+	vertical-align:middle;
+	position:relative;
+	text-align:center;
+	*display:block;
+	*top:50%;
+	*left:0;
+}
+.inner img{
+	display:inline;
+	vertical-align:middle;
+	*top:-50%;
+	*position:relative;
+	*display:block
+}
+
+* html .imageholder, *+html .imageholder {
+}
+* html .inner, *+html .inner {
+}
+* html .inner img, *+html .inner img {
+}
+
+</style>
+
+
+
+</head><body linkifymax="0" linkifycurrent="0" linkifying="true">
+<h1>Vertical align elements of different heights (based on xerxos's method)</h1>
+<div class="imageholder"> 
+  <div class="inner"><img src="vertical-align3_files/photo-1.jpg" alt="Image vertically centred" height="67" width="100"></div>
+</div>
+<div class="imageholder"> 
+  <div class="inner"><img src="vertical-align3_files/photo-2.jpg" alt="Image vertically centred" height="97" width="150"></div>
+</div>
+</body></html>

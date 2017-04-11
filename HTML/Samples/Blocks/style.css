@@ -1,0 +1,40 @@
+body {
+	margin: 0px;
+	padding: 50px;
+	font-size: 20px;
+}
+
+/* отступы */
+
+div.container {
+	margin-left: -50px;
+	margin-top: -50px;
+}
+
+div.block {
+	margin-top: 50px;
+	margin-left: 50px;
+}
+
+/* оформление */
+
+div.wrapper {
+	padding: 25px;
+}
+
+div.container {
+	/*text-align: center;*/
+}
+
+div.block {
+	width: 100px;
+	border: 10px solid red;
+	padding: 10px;
+	/*text-align: left;*/
+}
+
+/* цвета */
+
+div.wrapper		{ background: #b9efbe }	/* зеленый */
+div.container	{ background: #8cb8ef }	/* синий */
+div.block			{ background: #ccc; }

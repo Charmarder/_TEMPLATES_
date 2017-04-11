@@ -1,0 +1,16 @@
+/*--- Common ------------------------*/
+* { padding: 0; margin: 0; }
+p { padding: 0 10px; margin: 15px 0; }
+h1, h2, h3, h4, h5, h6 { padding: 10px; }
+img {	border: 0 none;}
+ul { padding-left: 30px;}
+ol { padding-left: 30px;}
+body .left { float: left; }
+body .right { float: right; }
+.clear {
+	clear: both;
+	display: block;
+	font-size: 1%;
+	line-height: 1%;
+	position: relative;
+} 

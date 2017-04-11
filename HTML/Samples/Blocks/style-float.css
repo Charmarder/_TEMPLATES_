@@ -1,0 +1,10 @@
+div.wrapper, 
+div.container {
+	overflow: hidden;
+	zoom: 1;
+}
+
+div.block {
+	display: inline; /* IE double margin bugfix */
+	float: left;
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<title></title>
+<style type="text/css">
+* { padding: 0; margin: 0; position: relative;}
+html, body {
+	margin: 0px;
+	padding: 0px;
+	height: 100%;
+	background: #BBB;
+}
+body {
+	margin: 0 auto;
+    min-width: 790px;      /* 2x (LC fullwidth + CC padding) + RC fullwidth */
+    max-width: 1000px;
+	background: #FFF;
+}
+#header {
+    background: #666;
+    height: 50px;
+}
+#container {
+    padding-left: 250px;    /* LC fullwidth */
+    padding-right: 290px;   /* RC fullwidth + CC padding */
+
+/*    min-height: 100%;
+    height: auto !important;
+    height: 100%; /* IE6 min-height hack */
+
+    overflow: hidden !important;
+    overflow: visible; /* IE6 overflow: hidden hack*/
+	background: red;
+}
+#container .column {
+    position: relative;
+    float: left;
+/*    margin-top: 50px;*/
+    padding-bottom: 20060px;  /* X + padding-bottom */
+    margin-bottom: -20000px;  /* X */
+}
+#center {
+    padding: 10px 20px;    /* CC padding */
+    width: 100%;
+    background: #DFD;
+}
+#left {
+    width: 230px;          /* LC width */
+    padding: 0 10px;       /* LC padding */
+    right: 290px;          /* LC fullwidth + CC padding */
+    margin-left: -100%;
+    background: #FEB;
+}
+#right {
+    width: 230px;          /* RC width */
+    padding: 0 10px;       /* RC padding */
+    margin-right: -250px;  /* RC fullwidth + CC padding */
+    background: #FEB;
+}
+#footer {
+    clear: both;
+    background: #666;
+    position: relative;
+    height: 50px;
+/*    margin-top: -50px;*/
+}
+/*** IE6 Fix ***/
+* html #left {
+  left: 250px;           /* RC fullwidth */
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="header">...</div>
+
+<div id="container">
+    <div id="center" class="column">...</div>
+    <div id="left" class="column">...</div>
+    <div id="right" class="column">...</div>
+</div>
+
+<div id="footer-wrapper">
+    <div id="footer">...</div>
+</div>
+
+</body>
+</html>

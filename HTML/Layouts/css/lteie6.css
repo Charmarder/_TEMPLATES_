@@ -1,0 +1,1 @@
+#all { width: expression(((document.documentElement.clientWidth || document.body.clientWidth) < 800) ? '800px': (((document.documentElement.clientWidth || document.body.clientWidth) > 1100) ? '1100px': '100%')); }

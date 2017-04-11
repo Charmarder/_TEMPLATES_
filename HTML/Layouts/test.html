@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title></title>
+<link rel="stylesheet" href="css/common.css" type="text/css">
+<style type="text/css">
+/* Layout ******************/
+html {
+    height: 100%;
+    background: url(img/window-bg.png) #EEE;
+}
+body {
+    position: absolute;
+    z-index: 0;
+    margin: 0 50px;
+
+    min-height: 100%;
+    height: auto !important;
+    height: 100%; /* IE6 min-height hack */
+
+    background: url(img/left-body-bg.png) 20% 0 repeat-y;
+}
+.body {
+    position: absolute;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    background: url(img/right-body-bg.png) 75% 0 repeat-y;
+}
+
+
+.container {
+    padding-bottom: 62px;
+    width: 100%;
+}
+.one {
+    background: url(img/left-body-bg.png) 20% 0 repeat-y;
+}
+.two {
+    background: url(img/right-body-bg.png) 75% 0 repeat-y;
+}
+
+#wrapper { 
+    float: left;
+	width: 100%;
+	height: auto;
+}
+#main {
+    margin-left: 20%;
+    margin-right: 25%;
+/*    background: #DDD;*/
+}
+#sidebar1 {
+    float: left;
+    width: 20%;
+    margin-left: -100%;
+    background: red;
+}
+#sidebar2 {
+    float: left;
+    width: 25%;
+    margin-left: -25%;
+    background: green;
+}
+
+#header {
+    background: url(img/title-bg.png) #45F left top repeat-x;
+    color: white;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    height: 60px;
+    width: 100%;
+    padding: 1px 0;
+    background: #45F;
+    color: white;
+}
+</style>
+</head>
+
+<body>
+<div class="body two"></div>
+
+<div id="header">
+  <h1>Мегакорпорация</h1>
+</div>
+
+<div class="container two">
+
+    <div id="wrapper">
+        <div id="main">
+            <h2>О компании</h2>
+            <p>Мегакорпорация является самой мегаамбициозной корпорацией в мире.
+            <p>По определению&trade;.
+            <p>Мегакорпорация является самой мегаамбициозной корпорацией в мире.
+            <p>По определению&trade;.
+            <p>Мегакорпорация является самой мегаамбициозной корпорацией в мире.
+            <p>По определению&trade;.
+            <p>Мегакорпорация является самой мегаамбициозной корпорацией в мире.
+            <p>По определению&trade;.
+            <p>Мегакорпорация является самой мегаамбициозной корпорацией в мире.
+            <p>По определению&trade;.
+            <p>Мегакорпорация является самой мегаамбициозной корпорацией в мире.
+            <p>По определению&trade;.
+        </div>
+    </div>
+    <div id="sidebar1">
+        <h2>Разделы</h2>
+    </div>
+    <div id="sidebar2">
+        <h2>Новости</h2>
+    </div>
+    <div style="clear: both;"></div>
+</div>
+
+<div id="footer">
+  <p>Сайт изготовлен в "Мегакорпорации", &copy; 2006
+</div>
+</body>
+</html>
