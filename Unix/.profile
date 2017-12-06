@@ -1,6 +1,35 @@
 umask 027
 
-SYSTEM=`(uname -s)`
+OS=`(uname -s)`
+echo "Operating system: $OS"
+
+## Perl relative vars
+#alias perl="/sbcimp/run/pd/csm/64-bit/perl/5.16.3/bin/perl"
+#export PERL5LIB=/sbcimp/run/pd/csm/64-bit/cpan/5.16.3-2013.03/lib
+if [ $OS = "SunOS" ]; then
+    PERLDIR="/opt/csm/32-bit/perl/5.16.1"
+    CPANLIB="/opt/csm/32-bit/cpan/5.16.1-2012.09/lib"
+    MODPERLLIB="/sbcimp/run/pd/apache_modules/2.2.20/mod_perl/2.0.5+perl-5.12.3/lib"
+    PERL5LIB="$CPANLIB:$MODPERLLIB"
+else
+    PERLDIR="/opt/csm/64-bit/perl/5.20.2"
+    CPANLIB="/opt/csm/64-bit/cpan/5.20.2-2014.10/lib/"
+    PERL5LIB="$CPANLIB"
+fi
+export PERL5LIB
+
+## SVN relative vars
+if [ $OS = "SunOS" ]; then
+    SVNDIR="/opt/csm/32-bit/subversion/1.7.7"
+    DEPSDIR="/opt/csm/32-bit/deps/1.0.5"    # Dependencies dirictory (need for svn)
+else
+    SVNDIR="/sbcimp/run/pd/csm/64-bit/subversion/1.7.8"
+    DEPSDIR="/opt/csm/64-bit/deps/1.0.7"    # Dependencies dirictory (need for svn)
+fi
+# needed for some perl modules (use SVN::Client;) 
+export LD_LIBRARY_PATH="$SVNDIR/lib:$DEPSDIR/lib"
+
+#OPENSSLDIR="/sbcimp/run/pd/openssl/0.9.8i"
 
 ## Oracle relative vars
 #ORACLE_HOME="/sbclocal/run/tp/oracle/client/v10.2.0.4-64bit"
@@ -10,56 +39,44 @@ ORACLE_SID="PRISMP1" # used by sqlplus for local db connection
 TWO_TASK="PRISMP1"   # used by sqlplus for remote db connection and will overrides the ORACLE_SID
 SQLPATH="~"          # where SQL*Plus will search for SQL scripts, including login.sql, including subdirectories
 EDITOR="vim"         # for SQL*Plus command 'edit'
-
 export ORACLE_HOME ORACLE_SID TWO_TASK SQLPATH EDITOR 
+export LD_LIBRARY_PATH="${ORACLE_HOME}/lib:${LD_LIBRARY_PATH}"
 
-## Perl relative vars
-MYLIB="$HOME/ubs/RemEx/app/SASSE/lib"
-if [ $SYSTEM = "SunOS" ]; then
-    #PERLDIR="/sbcimp/run/pd/csm/32-bit/perl/5.12.3"
-    #CPANLIB="/sbcimp/run/pd/csm/32-bit/cpan/5.12.3-2011.03/lib"
-    PERLDIR="/opt/csm/32-bit/perl/5.16.1"
-    CPANLIB="/opt/csm/32-bit/cpan/5.16.1-2012.09/lib"
-
-    MODPERLLIB="/sbcimp/run/pd/apache_modules/2.2.20/mod_perl/2.0.5+perl-5.12.3/lib"
-    PERL5LIB="$MYLIB:$CPANLIB:$MODPERLLIB"
+## SyBase relative vars
+if [ $OS == "Linux" ]; then
+#    export SYBASE=/sbcimp/run/tp/sybase/OpenClientServer/v15.0ebf14845
+    export SYBASE=/sbcimp/run/tp/sybase/OpenClientServer/v15.0ebf14855-KRBPRLM
+    export LANG=C
 else
-    PERLDIR="/opt/csm/64-bit/perl/5.20.2"
-    CPANLIB="/opt/csm/64-bit/cpan/5.20.2-2014.10/lib/"
-
-    PERL5LIB="$MYLIB:$CPANLIB"
+    export SYBASE=/sbcimp/run/tp/sybase/OpenClientServer/32-Bit/v15.0ebf14833
 fi
+export SYBASE_OCS=OCS-15_0
+export SYBASE_INCLUDE=$SYBASE/$SYBASE_OCS/include
+export SYBASE_LIB=$SYBASE/$SYBASE_OCS/lib
+export LD_LIBRARY_PATH=$SYBASE_LIB:${LD_LIBRARY_PATH}
+export ISQL=$SYBASE/$SYBASE_OCS/bin/isql
+export BCP=$SYBASE/$SYBASE_OCS/bin/bcp
 
-## SVN relative vars
-if [ $SYSTEM = "SunOS" ]; then
-    SVNDIR="/opt/csm/32-bit/subversion/1.7.7"
-else
-    SVNDIR="/sbcimp/run/pd/csm/64-bit/subversion/1.7.8"
-fi
-
-## Dependencies dirictory
-if [ $SYSTEM = "SunOS" ]; then
-    DEPSDIR="/opt/csm/32-bit/deps/1.0.5"     # need for svn
-else
-    DEPSDIR="/opt/csm/64-bit/deps/1.0.7"     # need for svn
-fi
-
-#OPENSSLDIR="/sbcimp/run/pd/openssl/0.9.8i"
-
-
-# needed for some perl modules (use SVN::Client;) 
-LD_LIBRARY_PATH="$ORACLE_HOME/lib:$SVNDIR/lib:$DEPSDIR/lib"
-
-if [ $SYSTEM = "SunOS" ]; then
+## Set PATH variable
+if [ $OS = "SunOS" ]; then
     PATH="/sbcimp/run/pd/vim/7.1/bin:$PATH"
     PATH="/sbcimp/run/pd/coreutils/32-bit/6.9/bin:$PATH"
 fi
 PATH="$ORACLE_HOME/bin:$PERLDIR/bin:$SVNDIR/bin:$DEPSDIR/bin:$PATH"
+#PATH=$PATH:/sbcimp/run/pd/gcc/64-bit/latest/bin/
+export PATH
 
-export PATH LD_LIBRARY_PATH PERL5LIB
+## Setup proxy
+#export http_proxy=http://DOMAIN\USERNAME:PASSWORD@SERVER:PORT
+#export https_proxy=http://DOMAIN\USERNAME:PASSWORD@SERVER:PORT
+#export ftp_proxy=http://DOMAIN\USERNAME:PASSWORD@SERVER:PORT
+#export HTTPS_PROXY_USERNAME=USERNAME (if required)
+#export HTTPS_PROXY_PASSWORD=PASSWORD (if required)
+export HTTPS_DEBUG=1
+export HTTPS_VERSION=3
 
-# set up aliases
-if [ $SYSTEM = "SunOS" ]; then
+## Set up aliases
+if [ $OS = "SunOS" ]; then
     if [ -d "/sbcimp/run/pd/coreutils/32-bit/6.9/bin" ]; then
         alias ls='ls -F --color=auto --group-directories-first' 
         alias ll='ls -lF --color=auto --group-directories-first'
@@ -74,7 +91,7 @@ else
 fi
 alias h='history | grep'
 
-# Define colors 
+## Define colors 
 eval $( dircolors -b $HOME/.LS_COLORS )
 BROWN='\033[0;33;49m'
 CYAN='\033[0;36;49m'
@@ -147,3 +164,6 @@ export PS1
 #echo ${PATH}:/usr/bin | perl -aF: -ple'$_=join":",grep{!$o{$_}++}@F'
 #PATH=`awk -F: '{for(i=1;i<=NF;i++){if(!a[$i]++)printf s$i;s=":"}}'<<<$PATH`
 #export SVN_EDITOR='vim -c "new|silent r! svn diff" -c "set syntax=diff buftype=nofile" -c "silent 1|wincmd j"'
+
+
+. ~/ubs/UBond/app/UbsTask/bin/setup.env
