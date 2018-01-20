@@ -90,6 +90,17 @@ else
     export TERM=xtermc
 fi
 alias h='history | grep'
+alias gs='git status '
+alias ga='git add '
+alias gb='git branch '
+alias gc='git commit'
+alias gd='git diff'
+alias go='git checkout '
+alias gk='gitk --all&'
+alias gx='gitx --all'
+
+alias got='git '
+alias get='git '
 
 ## Define colors 
 eval $( dircolors -b $HOME/.LS_COLORS )
@@ -166,4 +177,4 @@ export PS1
 #export SVN_EDITOR='vim -c "new|silent r! svn diff" -c "set syntax=diff buftype=nofile" -c "silent 1|wincmd j"'
 
 
-. ~/ubs/UBond/app/UbsTask/bin/setup.env
+#. ~/ubs/UBond/app/UbsTask/bin/setup.env
