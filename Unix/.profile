@@ -4,6 +4,7 @@ OS=`(uname -s)`
 echo "Operating system: $OS"
 
 ## Perl relative vars
+alias perl5.20.2="/sbcimp/run/pd/csm/64-bit/perl/5.20.2/bin/perl -I/sbcimp/run/pd/csm/64-bit/cpan/5.20.2-2014.10/lib/"
 #alias perl="/sbcimp/run/pd/csm/64-bit/perl/5.16.3/bin/perl"
 #export PERL5LIB=/sbcimp/run/pd/csm/64-bit/cpan/5.16.3-2013.03/lib
 if [ $OS = "SunOS" ]; then
@@ -163,9 +164,9 @@ export GREP_OPTIONS='--color=auto'
 
 
 # bash prompt with Subversion, Git, Mercurial
-#PS1="\[$GREEN\][\t]\[$RED\][\[$CYAN\]\u@\h:\[$YELLOW\]\w\[$RED\]]\[$PURPLE\] $ \[$RESET\]"
-#PS1="\n\[$GREEN\][\D{%H:%M.%S %a, %d %b}] \[$YELLOW\]\w \[$PURPLE\]\$(vcs_branch)\n\[$CYAN\][\u@\h]\[$PURPLE\] $ \[$RESET\]" 
-PS1="\n\[$GREEN\][\D{%H:%M.%S %a, %d %b}] $(is_mounted) \[$YELLOW\]\w \n\[$CYAN\][\u@\h]\[$PURPLE\] $ \[$RESET\]" 
+PS1="\n\[$GREEN\][\D{%H:%M.%S %a, %d %b}] $(is_mounted) \[$YELLOW\]\w\[$PURPLE\] $(vcs_branch) $(vcs_dirty)\n\[$CYAN\][\u@\h]\[$PURPLE\] $ \[$RESET\]" 
+
+#PS1="\n\[$GREEN\][\D{%H:%M.%S %a, %d %b}] $(is_mounted) \[$YELLOW\]\w \n\[$CYAN\][\u@\h]\[$PURPLE\] $ \[$RESET\]" 
 #PS1="\n\[$GREEN\][\D{%H:%M.%S %a, %d %b}] \[$YELLOW\]\w \n\[$CYAN\][\u@\h]\[$PURPLE\] \[\033(0\]b\[\033(B\] \[$RESET\]" 
 export PS1
 
@@ -177,4 +178,5 @@ export PS1
 #export SVN_EDITOR='vim -c "new|silent r! svn diff" -c "set syntax=diff buftype=nofile" -c "silent 1|wincmd j"'
 
 
-#. ~/ubs/UBond/app/UbsTask/bin/setup.env
+. ~/ubs/UBond/app/UbsTask/bin/setup.env
+
