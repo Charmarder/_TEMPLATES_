@@ -7,7 +7,7 @@ echo "Operating system: $OS"
 alias perl5.20.2="/sbcimp/run/pd/csm/64-bit/perl/5.20.2/bin/perl -I/sbcimp/run/pd/csm/64-bit/cpan/5.20.2-2014.10/lib/"
 #alias perl="/sbcimp/run/pd/csm/64-bit/perl/5.16.3/bin/perl"
 #export PERL5LIB=/sbcimp/run/pd/csm/64-bit/cpan/5.16.3-2013.03/lib
-if [ $OS = "SunOS" ]; then
+if [ $OS == "SunOS" ]; then
     PERLDIR="/opt/csm/32-bit/perl/5.16.1"
     CPANLIB="/opt/csm/32-bit/cpan/5.16.1-2012.09/lib"
     MODPERLLIB="/sbcimp/run/pd/apache_modules/2.2.20/mod_perl/2.0.5+perl-5.12.3/lib"
@@ -20,7 +20,7 @@ fi
 export PERL5LIB
 
 ## SVN relative vars
-if [ $OS = "SunOS" ]; then
+if [ $OS == "SunOS" ]; then
     SVNDIR="/opt/csm/32-bit/subversion/1.7.7"
     DEPSDIR="/opt/csm/32-bit/deps/1.0.5"    # Dependencies dirictory (need for svn)
 else
@@ -59,7 +59,7 @@ export ISQL=$SYBASE/$SYBASE_OCS/bin/isql
 export BCP=$SYBASE/$SYBASE_OCS/bin/bcp
 
 ## Set PATH variable
-if [ $OS = "SunOS" ]; then
+if [ $OS == "SunOS" ]; then
     PATH="/sbcimp/run/pd/vim/7.1/bin:$PATH"
     PATH="/sbcimp/run/pd/coreutils/32-bit/6.9/bin:$PATH"
 fi
@@ -77,7 +77,7 @@ export HTTPS_DEBUG=1
 export HTTPS_VERSION=3
 
 ## Set up aliases
-if [ $OS = "SunOS" ]; then
+if [ $OS == "SunOS" ]; then
     if [ -d "/sbcimp/run/pd/coreutils/32-bit/6.9/bin" ]; then
         alias ls='ls -F --color=auto --group-directories-first' 
         alias ll='ls -lF --color=auto --group-directories-first'
