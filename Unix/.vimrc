@@ -127,7 +127,10 @@ set nobomb                                    " writing file with BOM (Byte Orde
 set fileencodings=utf-8,cp1251,koi8-r,cp866   " List of file encodings for auto detection
 set nobackup                                  " Turn off the creation of backups
 set noswapfile                                " Turn off the creation of swap files
-"set dir=$myvimdir/swp                         " All swap files will be placed in this folder
+set noundofile                                " Turn off the creation of undo history
+"set backupdir=$myvimdir/backup/,/tmp//        " Location all backup files
+"set directory=$myvimdir/swp/,/tmp//           " Location all swap files
+"set undodir=$myvimdir/undo/,/tmp//            " Location all undo history files
 
 " Common abbreviations
 iabbrev Br      Best regards,
