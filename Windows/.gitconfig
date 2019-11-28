@@ -1,0 +1,19 @@
+[http]
+    proxy = http://proxy:8080
+[user]
+    name = Vyacheslav Yanchuk
+    email = your@email.com
+[alias]
+    ignore = update-index --assume-unchanged
+    unignore = update-index --no-assume-unchanged
+    ignored = !git ls-files -v | grep "^[[:lower:]]"
+    co = checkout
+    ci = commit
+    st = status
+    br = branch
+    hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+    type = cat-file -t
+    dump = cat-file -p
+[core]
+#    autocrlf = true
+#    safecrlf = true
