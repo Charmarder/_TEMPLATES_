@@ -1,0 +1,27 @@
+nav {
+    background: royalblue;
+    color: #fff;
+    line-height: 1.618;
+  }
+  nav ul {
+    list-style: none;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+  }
+  nav ul li {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+  }
+  nav ul li a {
+    cursor: pointer;
+    display: block;
+    padding: 1em 1.618rem;
+    text-transform: capitalize;
+  }
+  nav ul li a:hover {
+    background: #577ae4;
+  }
