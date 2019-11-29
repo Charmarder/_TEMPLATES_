@@ -103,4 +103,4 @@ public/
 # Microsoft(R) Visual Studio folder
 /.vs
 # Vim undo history files
-.un~
+*.un~
