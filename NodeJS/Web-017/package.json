@@ -1,13 +1,19 @@
 {
   "name": "web-017",
   "version": "1.0.0",
-  "description": "",
+  "description": "Web-17 - NodeJS basics",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "start": "npm run dev",
+    "unit": "jest --config test/unit/jest.conf.js --coverage",
+    "test": "npm run unit",
+    "lint": "eslint --ext .js,.vue src test/unit",
+    "build": "node build/build.js",
+
     "install": "npm install",
-    "start": "npx nodemon",
-    "run": "npx nodemon -e js,pug,css index.js"
+    "monall": "npx nodemon",
+    "mon": "npx nodemon -e js,pug,css index.js"
   },
   "author": "",
   "license": "ISC",
