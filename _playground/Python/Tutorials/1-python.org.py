@@ -411,11 +411,45 @@ f9()
 # 10. Brief Tour of the Standard Library
 def f10():
     """
+    10.1. Operating System Interface: import os; import shutil
+    10.2. File Wildcards: import glob - function for making file lists from directory wildcard searches
+    10.3. Command Line Arguments: import sys; import argparse
+    10.4. Error Output Redirection and Program Termination: 
+        The sys module also has attributes for stdin, stdout, and stderr.
+        sys.exit()
+    10.5. String Pattern Matching: import re - regular expression tools
+    10.6. Mathematics: import math; import random; import statistics - SciPy project <https://scipy.org>
+    10.7. Internet Access: from urllib.request import urlopen; import smtplib
+    10.8. Dates and Times: from datetime import date
+    10.9. Data Compression: zlib, gzip, bz2, lzma, zipfile and tarfile modules
+    10.10. Performance Measurement: from timeit import Timer;
+        profile and pstats modules provide tools for identifying time critical sections in larger blocks of code
+    10.11. Quality Control: import doctest - validate the embedded tests
+        import unittest - it allows a more comprehensive set of tests to be maintained in a separate file
+    10.12. Batteries Included:
+        The xmlrpc.client and xmlrpc.server modules make implementing remote procedure calls
+        The email package is a library for managing email messages
+        The json package provides robust support for parsing this popular data interchange format
+        The csv module supports direct reading and writing of files in Comma-Separated Value format
+        XML processing is supported by the xml.etree.ElementTree, xml.dom and xml.sax packages
+        The sqlite3 module is a wrapper for the SQLite database library
+        Internationalization is supported by a number of modules including gettext, locale, and the codecs
     """
 
 #-------------------------------------------------------------------------------
 # 11. Brief Tour of the Standard Library — Part II
 def f11():
     """
+    11.1. Output Formatting: import reprlib; import pprint; import textwrap; import locale
     11.2. Templating: from string import Template
+    11.3. Working with Binary Data Record Layouts: import struct - pack() and unpack()
+    11.4. Multi-threading: import threading, zipfile
+    11.5. Logging: import logging
+    11.6. Weak References: import weakref, gc
+    11.7. Tools for Working with Lists: 
+        from array import array; 
+        from collections import deque; 
+        import bisect
+        from heapq import heapify, heappop, heappush
+    11.8. Decimal Floating Point Arithmetic: from decimal import *
     """
