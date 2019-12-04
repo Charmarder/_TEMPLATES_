@@ -1,6 +1,30 @@
 #-------------------------------------------------------------------------------
+# 3. An Informal Introduction to Python
+def f3():
+    """ 
+    - 15 // -4 = -4 It is some bug when you devide on negative value it round to top
+    Strings:
+    - Multi-line string 
+    - Two or more string literals (i.e. 'Py' 'thon' = 'Python') next to each other are automatically concatenated.
+    - Negative indeces start counting from the right (word[-1])
+    - Slice (word[:2] or word[-1:0:-1])  indices as pointing between characters, work for any built-in sequence types 
+    - String are immutable. 
+    Lists ([]):
+    - Lists might contain items of different types, but usually the items all have the same type.
+    - Slicing and concatination (+) work
+    """
+    pass # The pass statement does nothing.
+
+
+#-------------------------------------------------------------------------------
 # 4. More Control Flow Tools
 def f4():
+    """     
+    - for ... else
+    - Built-in function range(start, stop[, step]) - generates arithmetic progressions
+    - Built-in function enumerate(iterable, start=0) - return an enumerate object
+    - 4.7.3. Special parameters: def f(pos1, pos2, /, pos_or_kwd, *, kwd1, kwd2)
+    """
 
     def f4_4(): # break and continue Statements, and else Clauses on Loops
         """Searches for prime numbers"""
@@ -27,6 +51,7 @@ def f4():
         print()
     f4_6(2000)
 
+    # 4.7. More on Defining Functions
     def f4_7_2(kind, *arguments, **keywords):
         """The *arguments and **keywords is a common idiom to allow arbitrary number of arguments"""
         print("\n" + f4_7_2.__doc__ + "\n" + '-'*80)
@@ -56,11 +81,24 @@ def f4():
     f4_7_7('spam')
 
 
-f4()
+# f4()
 
 #-------------------------------------------------------------------------------
 # 5. Data Structures
 def f5():
+    """
+    - 5.1.2. Using Lists as Queues: from collections import deque
+    - 5.1.4. Nested List Comprehensions: [[row[i] for row in matrix] for i in range(4)]
+    - 5.2. The del statement: remove item from list and entire variable
+    Sequence Types:
+    - List []
+    - Tuple ()
+    - Set {}
+    - Dictionary {key: value}
+
+    - Comparisons can be chained (a < b == c)
+    - Sequence objects typically may be compared to other objects with the same sequence type
+    """
 
     def f5_1():
         """List examples"""
@@ -121,14 +159,28 @@ def f5():
 #-------------------------------------------------------------------------------
 # 6. Modules
 def f6():
-    print(__name__) # modul name
+    """
+    Module:
+    - __name__ - module name
+    - module.version.pyc - “Compiled” Python files
+    - -O switch: remote assert statements, -OO: removes both assert statements and __doc__ strings
+    Packege:
+    - Way of structuring Python’s module namespace by using “dotted module names”: import sound.effects.echo
+    - The __init__.py files are required to make Python treat directories containing the file as packages. 
+      This prevents directories with a common name, such as string, unintentionally hiding valid modules that occur later on the module search path.
+      __all__
+    """
+    # print(__name__) # module name
 
-    def f6_1():
+
+    def f6_1():    
         """6.1. More on Modules
 
         import fibo as fib
         from fibo import fib as fibonacci
+        from fibo import *: BAD practice
         """
+    f6_1()
 
     def f6_1_1():
         """6.1.1. Executing modules as scripts
@@ -138,6 +190,7 @@ def f6():
         if __name__ == "__main__":
             import sys
             print(int(sys.argv[1]))
+    f6_1_1()
 
     def f6_1_2():
      """6.1.2. The Module Search Path
@@ -147,12 +200,15 @@ def f6():
     - PYTHONPATH (a list of directory names, with the same syntax as the shell variable PATH).
     - The installation-dependent default.
     """
+    f6_1_2()
 
     def f6_3():
         """6.3. The dir() Function"""
 
         import sys
         dir(sys)
+    f6_3()
+
 
 #-------------------------------------------------------------------------------
 # 7. Input and Output
@@ -197,7 +253,7 @@ def f7():
         import math
         print('The value of pi is approximately %5.3f.' % math.pi)
 
-#    f7_1()
+    f7_1()
 
     def f7_2():
         """7.2. Reading and Writing Files"""
@@ -256,7 +312,6 @@ def f8():
     finally:
         print('Goodbye, world!')
 
-
 #f8()
 
 
@@ -291,8 +346,8 @@ def f9():
         def f(self):
             print('Hello', self.name, 'World!')
 
-    a = First('A');
-    b = First('B');
+    a = First('A')
+    b = First('B')
     b.kind = 'C'
     print(b.kind)
     print(a.kind)
@@ -315,9 +370,13 @@ def f9():
     # 9.5.1. Multiple Inheritance: depth-first, left-to-right
     class Second():
         pass
+    
     class MultiDerivedClass(First, Second):
         pass
 
+    mdc = MultiDerivedClass('Mak')
+    print(mdc.name)
+    
     print(' 9.8. Iterators '.center(80, '-'))
     class Reverse:
         """Iterator for looping over a sequence backwards."""
@@ -346,5 +405,17 @@ def f9():
     for char in reverse('golf'):
         print(char)
 
-#f9()
+f9()
 
+#-------------------------------------------------------------------------------
+# 10. Brief Tour of the Standard Library
+def f10():
+    """
+    """
+
+#-------------------------------------------------------------------------------
+# 11. Brief Tour of the Standard Library — Part II
+def f11():
+    """
+    11.2. Templating: from string import Template
+    """
