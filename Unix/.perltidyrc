@@ -1,6 +1,8 @@
 ###############################################################################
 # This is a perltidy configuration file (.perltidyrc for Unix/Windows, perltidy.ini for Windows) 
 # 
+# For Windows you can put file to $VIM/vim81
+#
 # A handy command to know when you start using a configuration file and where perltidy will looking for it is
 #   perltidy -dpro
 # Others useful include: 
