@@ -1,3 +1,6 @@
 {
-    "python.pythonPath": "env\\Scripts\\python.exe"
+    "python.pythonPath": "env\\Scripts\\python.exe",
+//    "python.linting.pylintArgs": ["--load-plugins", "pylint_django", "--disable=all", "--enable=F,E,unreachable,duplicate-key,unnecessary-semicolon,global-variable-not-assigned,unused-variable,binary-op-exception,bad-format-string,anomalous-backslash-in-string,bad-open-mode"],
+    "python.linting.pylintArgs": ["--load-plugins", "pylint_django", "--disable=missing-docstring,invalid-name,line-too-long,arguments-differ"],
+//    "python.linting.pylintArgs": ["--load-plugins", "pylint_django", "--errors-only"],
 }

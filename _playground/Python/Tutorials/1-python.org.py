@@ -95,9 +95,11 @@ def f5():
     - Tuple ()
     - Set {}
     - Dictionary {key: value}
-
+    5.7.
     - Comparisons can be chained (a < b == c)
     - Sequence objects typically may be compared to other objects with the same sequence type
+    - Short-circuit operators (a or b or c): when used as a general value and not as a Boolean, 
+      return value is the last evaluated argument.
     """
 
     def f5_1():
@@ -153,6 +155,19 @@ def f5():
         print([student for grade, i, student in decorated])               # undecorate
 
     f5_1_sort()
+
+    def f5_7():
+        """5.7. More on Conditions
+
+        When used as a general value and not as a Boolean, the return value of a 
+        short-circuit operator is the last evaluated argument.
+        """
+
+        string1, string2, string3 = '', 'Trondheim', 'Hammer Dance'
+        non_null = string1 or string2 or string3    # non_null = 'Trondheim'
+        print(non_null)
+
+    f5_7()
 
 #f5()
 

@@ -11,6 +11,7 @@ cinst yarn -y                       # Yarn (Install) 1.19.2
 cinst vscode -y                     # Visual Studio Code 1.39.1 (734,874)
 cinst vim -y                        # Vim 8.1.2352 (359,644)
 cinst notepadplusplus.install -y    # Notepad++ (Install) 7.8.1 (4,785,376)
+cinst db-visualizer -y              # DbVisualizer 10.0.17
 
 cinst mobaxterm -y                  # MobaXTerm 12.2.0
 cinst postman -y                    # Postman for Windows 7.8.0

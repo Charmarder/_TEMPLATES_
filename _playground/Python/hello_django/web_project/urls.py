@@ -18,7 +18,7 @@ from django.urls import include, path
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),    # charmarder/admin
     path('', include("hello.urls")),
 ]
 
