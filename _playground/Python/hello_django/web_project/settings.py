@@ -25,7 +25,12 @@ SECRET_KEY = 'tgu_$(l71n^x)oar&lv3c9tpd!=#xls5gdwhvxo(+do)2qhl7='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    # Example host name only; customize to your specific host
+    "vsdocs-django-sample-container.azurewebsites.net"
+]
 
 
 # Application definition

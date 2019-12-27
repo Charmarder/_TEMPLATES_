@@ -1,0 +1,10 @@
+version: '2.1'
+
+services:
+  hello_django:
+    image: hello_django
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
