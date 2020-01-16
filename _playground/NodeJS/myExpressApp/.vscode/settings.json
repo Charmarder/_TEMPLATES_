@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/20474377-1c49-4851-a1f8-5ad4da782931/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/charmarderExpressApp",
+    "appService.deploySubpath": ""
+}

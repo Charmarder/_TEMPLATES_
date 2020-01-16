@@ -10,10 +10,8 @@
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit",
     "build": "node build/build.js",
-
-    "install": "npm install",
-    "monall": "npx nodemon",
-    "mon": "npx nodemon -e js,pug,css index.js"
+    "monall": "nodemon",
+    "mon": "nodemon -e js,pug,css index.js"
   },
   "author": "",
   "license": "ISC",
@@ -21,7 +19,7 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.1",
+    "nodemon": "^2.0.2",
     "pug": "^2.0.4"
   }
 }
