@@ -17,7 +17,7 @@
 
 	// Use 'appPort' to create a container with published ports. If the port isn't working, be sure
 	// your server accepts connections from all interfaces (0.0.0.0 or '*'), not just localhost.
-	// "appPort": [],
+	"appPort": [8000],
 
 	// Uncomment the next line to run commands after the container is created.
 	// "postCreateCommand": "pip install -r requirements.txt",

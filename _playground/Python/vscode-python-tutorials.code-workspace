@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "hello_django",
+			"path": "hello_django"
+		},
+		{
+			"name": "hello_flask",
+			"path": "hello_flask"
+		}
+	],
+	"settings": {}
+}
