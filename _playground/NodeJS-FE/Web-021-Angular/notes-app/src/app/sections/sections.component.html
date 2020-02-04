@@ -1,0 +1,16 @@
+<div class="input-group" style="padding-bottom:20px">
+  <input type="text" class="form-control" placeholder="New section name" />
+  <span class="input-group-btn">
+    <button class="btn btn-default" type="button">Add</button>
+  </span>
+</div>
+
+<ul class="list-group">
+  <li
+    *ngFor="let section of sections"
+    class="list-group-item"
+    style="cursor: default"
+  >
+    {{ section.title }}
+  </li>
+</ul>

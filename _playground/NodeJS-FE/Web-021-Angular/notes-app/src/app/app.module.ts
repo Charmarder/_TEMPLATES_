@@ -6,9 +6,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NotesComponent } from './notes/notes.component';
+import { SectionsComponent } from './sections/sections.component';
 
 @NgModule({
-  declarations: [AppComponent, NotesComponent],
+  declarations: [AppComponent, NotesComponent, SectionsComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent]
