@@ -11,7 +11,9 @@
         #noteText
       ></textarea>
     </div>
-    <button (click)="add(noteText)" class="btn btn-primary">Post note</button>
+    <button (click)="add(noteText)" class="btn btn-primary">
+      Post note
+    </button>
   </div>
 </div>
 
@@ -22,7 +24,7 @@
   <ul class="list-group">
     <li *ngFor="let note of notes" class="list-group-item">
       {{ note.text }}
-      <button class="btn btn-secondary" (click)="remove(note._id)">
+      <button class="btn btn-secondary float-right" (click)="remove(note._id)">
         remove
       </button>
     </li>
