@@ -14,7 +14,6 @@ interface Note {
 export class NotesComponent implements OnInit {
   private notesUrl = 'notes'; // URL to web api
   notes: Note[] = [];
-  text: string;
 
   constructor(private http: HttpClient) {}
 
@@ -28,10 +27,13 @@ export class NotesComponent implements OnInit {
     });
   }
 
-  add() {
-    const note = { text: this.text };
+  add(text: string) {
+    text = text.trim();
+    if (!text) {
+      return;
+    }
+    const note = { text };
     this.addNote(note).then(() => this.readNotes());
-    this.text = '';
   }
 
   remove(id: string) {

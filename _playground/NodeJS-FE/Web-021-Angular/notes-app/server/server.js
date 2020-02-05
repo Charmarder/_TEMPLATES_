@@ -10,6 +10,8 @@ const app = express();
 
 app.use(express.static(path.join(__dirname, '../dist/notes-app')));
 
+app.use(require('cors')()); // allow Cross-domain requests
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -77,10 +79,15 @@ MongoClient.connect(url, (err, client) => {
   console.log('Connected successfully to server');
   db = client.db(dbName);
   db.notes = db.collection('notes');
+  db.todos = db.collection('todos');
   // client.close();
 });
 
+/*** Notes API ***/
 app.get('/notes', (req, res) => {
+  // res.header('Access-Control-Allow-Origin', '*');
+  // res.header('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With');
+
   db.notes.find(req.query).toArray(function(err, items) {
     if (err) res.sendStatus(500);
     else res.send(items);
@@ -97,6 +104,44 @@ const ObjectID = require('mongodb').ObjectID;
 app.delete('/notes', function(req, res) {
   var id = new ObjectID(req.query.id);
   db.notes.remove({ _id: id }, function(err) {
+    if (err) {
+      console.error(err);
+      res.send({ ok: false });
+    } else {
+      res.send({ ok: true });
+    }
+  });
+});
+
+/*** Todos API ***/
+app.get('/todos', (req, res) => {
+  db.todos.find(req.query).toArray(function(err, items) {
+    if (err) res.sendStatus(500);
+    else
+      res.send(
+        items.map(i => {
+          i.id = i._id;
+          delete i._id;
+          return i;
+        })
+      );
+  });
+});
+
+app.post('/todos', function(req, res) {
+  db.todos.insertOne(req.body, function(err, r) {
+    if (err) throw err;
+    let o = r.ops[0];
+    o.id = o._id;
+    delete o._id;
+    console.log('Object inserted', o);
+    res.send(o);
+  });
+});
+
+app.delete('/todos/:id', function(req, res) {
+  var id = new ObjectID(req.params.id);
+  db.todos.remove({ _id: id }, function(err) {
     if (err) {
       console.error(err);
       res.send({ ok: false });

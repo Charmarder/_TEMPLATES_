@@ -11,7 +11,10 @@
         #noteText
       ></textarea>
     </div>
-    <button (click)="add(noteText)" class="btn btn-primary">
+    <button
+      (click)="add(noteText.value); noteText.value = ''"
+      class="btn btn-primary"
+    >
       Post note
     </button>
   </div>
