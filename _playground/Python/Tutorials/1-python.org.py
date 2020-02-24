@@ -2,16 +2,16 @@
 # 3. An Informal Introduction to Python
 def f3():
     """ 
-    - 15 // -4 = -4 It is some bug when you devide on negative value it round to top
+    - 15 // -4 = -4 It is some bug when you divide on negative value it round to top
     Strings:
     - Multi-line string 
     - Two or more string literals (i.e. 'Py' 'thon' = 'Python') next to each other are automatically concatenated.
-    - Negative indeces start counting from the right (word[-1])
+    - Negative indexes start counting from the right (word[-1])
     - Slice (word[:2] or word[-1:0:-1])  indices as pointing between characters, work for any built-in sequence types 
     - String are immutable. 
     Lists ([]):
     - Lists might contain items of different types, but usually the items all have the same type.
-    - Slicing and concatination (+) work
+    - Slicing and concatenation (+) work
     """
     pass # The pass statement does nothing.
 
@@ -127,7 +127,7 @@ def f5():
         print(fruits.pop())
 
     def f5_1_sort():
-        """Using Decorate-Sort-Undecorate approch
+        """Using Decorate-Sort-Undercorate approach
 
         5.1 -> sorted -> Sorting HOW TO"""
         print("\n" + f5_1_sort.__doc__ + "\n" + '-'*80)
@@ -146,13 +146,13 @@ def f5():
             Student('dave', 'B', 10),
         ]
 
-        # Using Decorate-Sort-Undecorate approch
+        # Using Decorate-Sort-Undercorate approach
         print(student_objects)
         decorated = [(student.grade, i, student) for i, student in enumerate(student_objects)]
         print(decorated)
         decorated.sort()
         print(decorated)
-        print([student for grade, i, student in decorated])               # undecorate
+        print([student for grade, i, student in decorated])               # undercorate
 
     f5_1_sort()
 
@@ -179,7 +179,7 @@ def f6():
     - __name__ - module name
     - module.version.pyc - “Compiled” Python files
     - -O switch: remote assert statements, -OO: removes both assert statements and __doc__ strings
-    Packege:
+    Package:
     - Way of structuring Python’s module namespace by using “dotted module names”: import sound.effects.echo
     - The __init__.py files are required to make Python treat directories containing the file as packages. 
       This prevents directories with a common name, such as string, unintentionally hiding valid modules that occur later on the module search path.
@@ -258,7 +258,7 @@ def f7():
         s = Template('$who likes $what')
         print(s.substitute(who='Tim', what='kung pao'))
 
-        # 4. Manual fomating: using string slicing and concatenation operations
+        # 4. Manual formating: using string slicing and concatenation operations
         for x in range(1, 11):
             print(repr(x).rjust(2), repr(x*x).rjust(3), end=' ')
             # Note use of 'end' on previous line
@@ -339,7 +339,7 @@ def f9():
         """Classes
 
         - Class (shared) and Instance Variables
-        - Classes has no access modifiers (public, privat, protected...)
+        - Classes has no access modifiers (public, private, protected...)
         - Nothing in Python makes it possible to enforce data hiding
         - Data attributes override method attributes with the same name
         - Data attributes can be added by users (dynamic attributes creation)
