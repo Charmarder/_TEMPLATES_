@@ -1,9 +1,9 @@
 from thumbnail_maker0 import ThumbnailMakerService as TMS0
 from thumbnail_maker1_threading_lock_semaphore import ThumbnailMakerService as TMS1
-# from thumbnail_maker2_threading_queue import ThumbnailMakerService as TMS2
-# from thumbnail_maker3_process_pool import ThumbnailMakerService as TMS3
-# from thumbnail_maker4_multiprocess_shared import ThumbnailMakerService as TMS4
-# from thumbnail_maker5_asyncio import ThumbnailMakerService as TMS5
+from thumbnail_maker2_threading_queue import ThumbnailMakerService as TMS2
+from thumbnail_maker3_process_pool import ThumbnailMakerService as TMS3
+from thumbnail_maker4_multiprocess_shared import ThumbnailMakerService as TMS4
+from thumbnail_maker5_asyncio import ThumbnailMakerService as TMS5
 
 IMG_URLS = \
     ['https://dl.dropboxusercontent.com/s/2fu69d8lfesbhru/pexels-photo-48603.jpeg',
@@ -42,18 +42,18 @@ def test_thumbnail_maker1():
     tn_maker = TMS1()
     tn_maker.make_thumbnails(IMG_URLS)
 
-# def test_thumbnail_maker2():
-#     tn_maker = TMS2()
-#     tn_maker.make_thumbnails(IMG_URLS)
+def test_thumbnail_maker2():
+    tn_maker = TMS2()
+    tn_maker.make_thumbnails(IMG_URLS)
 
-# def test_thumbnail_maker3():
-#     tn_maker = TMS3()
-#     tn_maker.make_thumbnails(IMG_URLS)
+def test_thumbnail_maker3():
+    tn_maker = TMS3()
+    tn_maker.make_thumbnails(IMG_URLS)
 
-# def test_thumbnail_maker4():
-#     tn_maker = TMS4()
-#     tn_maker.make_thumbnails(IMG_URLS)
+def test_thumbnail_maker4():
+    tn_maker = TMS4()
+    tn_maker.make_thumbnails(IMG_URLS)
 
-# def test_thumbnail_maker5():
-#     tn_maker = TMS5()
-#     tn_maker.make_thumbnails(IMG_URLS)
+def test_thumbnail_maker5():
+    tn_maker = TMS5()
+    tn_maker.make_thumbnails(IMG_URLS)

@@ -1,15 +1,16 @@
-# thumbnail_maker1_threading_lock_semaphore.py
+# thumbnail_maker2_threading_queue.py
 # Downloading images (IO-bound tasks) - used pool of threading.Thread()
+# Resizing images (CPU-bound tasks) - used single threading.Thread()
+# Both operations made simultaneously
 #
-# Thread Synchronization used: 
-#   threading.Lock() - calculating download size
-#   threading.Semaphore() - limiting number of concurrent download threads
+# Inter-thread Communication - used queue.Queue()
 import time
 import os
 import logging
 from urllib.parse import urlparse
 from urllib.request import urlretrieve
-import threading
+from queue import Queue, Empty
+from threading import Thread
 
 import PIL
 from PIL import Image
@@ -22,59 +23,32 @@ class ThumbnailMakerService(object):
         self.home_dir = home_dir
         self.input_dir = self.home_dir + os.path.sep + 'incoming'
         self.output_dir = self.home_dir + os.path.sep + 'outgoing'
-        self.downloaded_bytes = 0
-        self.dl_lock = threading.Lock()
-        max_concurrent_dl = 4
-        self.dl_sem = threading.Semaphore(max_concurrent_dl)
+        self.img_queue = Queue()
+        self.dl_queue = Queue()
 
-    def download_image(self, url):
-        # download each image and save to the input dir 
-        # self.dl_sem.acquire()
-        # try:
-        with self.dl_sem:
-            logging.info("downloading image at URL " + url)
-            img_filename = urlparse(url).path.split('/')[-1]
-            dist_path = self.input_dir + os.path.sep + img_filename
-            urlretrieve(url, dist_path)
-            img_size = os.path.getsize(dist_path)
-            with self.dl_lock:
-                self.downloaded_bytes += img_size
-            logging.info("image [{} bytes] saved to {}".format(img_size, dist_path))
-        # finally:
-        #     self.dl_sem.release()
-
-    def download_images(self, img_url_list):
-        # validate inputs
-        if not img_url_list:
-            return
-        os.makedirs(self.input_dir, exist_ok=True)
-        
-        logging.info("beginning image downloads")
-
-        start = time.perf_counter()
-        threads = []
-        for url in img_url_list:
-            t = threading.Thread(target=self.download_image, args=(url,))
-            t.start()
-            threads.append(t)
-        for t in threads:
-            t.join()
-        end = time.perf_counter()
-
-        logging.info("downloaded {} images in {} seconds".format(len(img_url_list), end - start))
+    def download_image(self):
+        while not self.dl_queue.empty():
+            try:
+                url = self.dl_queue.get(block=False)
+                # download each image and save to the input dir 
+                img_filename = urlparse(url).path.split('/')[-1]
+                urlretrieve(url, self.input_dir + os.path.sep + img_filename)
+                self.img_queue.put(img_filename)
+                
+                self.dl_queue.task_done()
+            except Empty:
+                logging.info("Queue empty")
 
     def perform_resizing(self):
         # validate inputs
-        if not os.listdir(self.input_dir):
-            return
         os.makedirs(self.output_dir, exist_ok=True)
 
         logging.info("beginning image resizing")
         target_sizes = [32, 64, 200]
-        num_images = len(os.listdir(self.input_dir))
 
         start = time.perf_counter()
-        for filename in os.listdir(self.input_dir):
+        while (filename := self.img_queue.get()):
+            # logging.info("resizing image {}".format(filename))
             orig_img = Image.open(self.input_dir + os.path.sep + filename)
             for basewidth in target_sizes:
                 img = orig_img
@@ -90,17 +64,41 @@ class ThumbnailMakerService(object):
                 img.save(self.output_dir + os.path.sep + new_filename)
 
             os.remove(self.input_dir + os.path.sep + filename)
+            # logging.info("done resizing image {}".format(filename))
+            self.img_queue.task_done()
+        else:
+            self.img_queue.task_done()
         end = time.perf_counter()
 
+        num_images = len(os.listdir(self.output_dir))
         logging.info("created {} thumbnails in {} seconds".format(num_images, end - start))
 
     def make_thumbnails(self, img_url_list):
         logging.info("START make_thumbnails")
         start = time.perf_counter()
 
-        self.download_images(img_url_list)
-        # self.perform_resizing()
+        for img_url in img_url_list:
+            self.dl_queue.put(img_url)
 
+        logging.info("beginning image downloads")
+        start_dl = time.perf_counter()
+        # use threads for IO-bound (download) tasks
+        num_dl_threads = 4
+        for _ in range(num_dl_threads):
+            t = Thread(target=self.download_image)
+            t.start()
+
+        # use single thread for CPU-bound (resize) tasks
+        t2 = Thread(target=self.perform_resizing)
+        t2.start()
+
+        self.dl_queue.join()        # wait for download is finished
+        self.img_queue.put(None)    # add poison pill
+        end_dl = time.perf_counter()
+
+        logging.info("downloaded {} images in {} seconds".format(len(img_url_list), end_dl - start_dl))
+
+        t2.join()
         end = time.perf_counter()
+
         logging.info("END make_thumbnails in {} seconds".format(end - start))
-    
