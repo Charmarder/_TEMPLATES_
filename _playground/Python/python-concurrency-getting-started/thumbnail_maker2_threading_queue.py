@@ -47,27 +47,30 @@ class ThumbnailMakerService(object):
         target_sizes = [32, 64, 200]
 
         start = time.perf_counter()
-        while (filename := self.img_queue.get()):
-            # logging.info("resizing image {}".format(filename))
-            orig_img = Image.open(self.input_dir + os.path.sep + filename)
-            for basewidth in target_sizes:
-                img = orig_img
-                # calculate target height of the resized image to maintain the aspect ratio
-                wpercent = (basewidth / float(img.size[0]))
-                hsize = int((float(img.size[1]) * float(wpercent)))
-                # perform resizing
-                img = img.resize((basewidth, hsize), PIL.Image.LANCZOS)
-                
-                # save the resized image to the output dir with a modified file name 
-                new_filename = os.path.splitext(filename)[0] + \
-                    '_' + str(basewidth) + os.path.splitext(filename)[1]
-                img.save(self.output_dir + os.path.sep + new_filename)
+        while True:
+            filename = self.img_queue.get()
+            if filename:
+                # logging.info("resizing image {}".format(filename))
+                orig_img = Image.open(self.input_dir + os.path.sep + filename)
+                for basewidth in target_sizes:
+                    img = orig_img
+                    # calculate target height of the resized image to maintain the aspect ratio
+                    wpercent = (basewidth / float(img.size[0]))
+                    hsize = int((float(img.size[1]) * float(wpercent)))
+                    # perform resizing
+                    img = img.resize((basewidth, hsize), PIL.Image.LANCZOS)
+                    
+                    # save the resized image to the output dir with a modified file name 
+                    new_filename = os.path.splitext(filename)[0] + \
+                        '_' + str(basewidth) + os.path.splitext(filename)[1]
+                    img.save(self.output_dir + os.path.sep + new_filename)
 
-            os.remove(self.input_dir + os.path.sep + filename)
-            # logging.info("done resizing image {}".format(filename))
-            self.img_queue.task_done()
-        else:
-            self.img_queue.task_done()
+                os.remove(self.input_dir + os.path.sep + filename)
+                # logging.info("done resizing image {}".format(filename))
+                self.img_queue.task_done()
+            else:
+                self.img_queue.task_done()
+                break
         end = time.perf_counter()
 
         num_images = len(os.listdir(self.output_dir))
