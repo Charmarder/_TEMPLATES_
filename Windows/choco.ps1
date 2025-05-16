@@ -1,20 +1,21 @@
-# this 2 need for Vim Vundle https://github.com/VundleVim/Vundle.vim/wiki/Vundle-for-Windows
-cinst git -y                            # Git (Install) 2.24.0.2 (4,144,690)
-cinst curl -y                           # cURL 7.67.0 (1,368,204)
-cinst ctags --alow-empty-checksums -y   # it is needed for Vim taglist.vim plugin
+# this 2 need for Vim Plugin Managers - vim-plug, Vundle (https://github.com/VundleVim/Vundle.vim/wiki/Vundle-for-Windows)
+choco install git -y                            # Git 2.49.0 (13,763,701)
+choco install curl -y                           # cURL 8.13.0 (4,699,103)
+choco install ctags --alow-empty-checksums -y   # ctags 5.8.1 (28,007) it is needed for Vim tagbar/taglist.vim plugin
 
-cinst strawberryperl -y             # Strawberry Perl 5.30.1.1 (767,799)
-cinst python3 -y                    # Python 3.8.1 (1,070,798)
-cinst nodejs.install -y             # Node JS (Install) 13.5.0 (3,138,285)
-cinst yarn -y                       # Yarn (Install) 1.21.1 (615,814)
+choco install strawberryperl -y             # Strawberry Perl 5.40.2.1 (1,578,143)
+choco install python3 -y                    # Python 3.13.3 (35,464,505)
+choco install nodejs -y                     # Node JS 24.0.1 (5,726,052)
+choco install yarn -y                       # Yarn 1.22.22 (1,725,460)
+choco install jre8 -y                       # jre8 8.0.451 (35,138,740)
 
-cinst vscode -y                     # Visual Studio Code 1.41.1 (785,720)
-cinst vim -y                        # Vim 8.1.2352 (359,644)
-cinst notepadplusplus.install -y    # Notepad++ (Install) 7.8.2 (5,100,653)
-cinst db-visualizer -y              # DbVisualizer 10.0.17 (5,397)
+choco install db-visualizer -y              # DbVisualizer 25.1.3 (90,975)
+choco install postman -y                    # Postman for Windows 11.40.5
+choco install fiddler -y                    # Telerik Fiddler Web Debugger 5.0.20253.3311
 
-cinst mobaxterm -y                  # MobaXTerm 12.2.0
-cinst postman -y                    # Postman for Windows 7.8.0
-cinst fiddler -y                    # Telerik Fiddler Web Debugger 5.0.20194.41348
-cinst puntoswitcher -y              # Punto Switcher 4.4
-cinst winrar -y                     # WinRAR 5.7
+choco install vscode -y                     # Visual Studio Code 1.100.1 (8,173,866)
+choco install vim -y                        # Vim 9.1.1382 (3,794,407)
+choco install notepadplusplus -y            # Notepad++ 8.8.1 (17,503,744)
+choco install mobaxterm -y                  # MobaXTerm 25.2.0
+
+choco install winrar -y                     # WinRAR 7.11.0
