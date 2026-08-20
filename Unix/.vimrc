@@ -131,30 +131,26 @@ set noundofile                                " Turn off the creation of undo hi
 "set backupdir=$myvimdir/backup/,/tmp//        " Location all backup files
 "set directory=$myvimdir/swp/,/tmp//           " Location all swap files
 "set undodir=$myvimdir/undo/,/tmp//            " Location all undo history files
+set tags=./tags
 
 " Common abbreviations
 iabbrev Br      Best regards,
 iabbrev Btw     By the way
 
-" Show additional info in status line
-"set statusline=%F%m%r%h%w\ [TYPE:%Y\ %{&ff}\ %{&fenc}%{(&bomb?\"-BOM\":\"\")}]\ [SESSION:%{MySessionName()}]\ %=\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04v,%04l][%p%%]\ [LEN=%L]
-
+" Session settings
+set viminfo+=!  " save and restore global variables that start with an uppercase letter, and don't contain a lowercase letter
 set sessionoptions=curdir,folds,tabpages,unix
-set tags=./tags
 
 function! MySessionName()
 return substitute(v:this_session, '\(.*\)\\\(.*\)$', '\2', '')
 endfunction
 
-"function! RestoreSession()
-"  if argc() == 0 "vim called without arguments
-"    execute 'SessionOpenLast'
-"  end
-"endfunction
+function! RestoreSession()
+  if argc() == 0 "vim called without arguments
+    execute 'SessionOpenLast'
+  end
+endfunction
 "autocmd VimEnter * call RestoreSession()
-
-" save and restore global variables that start with an uppercase letter, and don't contain a lowercase letter
-set viminfo+=!
 
 if ($OS =~ "Windows")
     " paj using PSCP on Windows. Works best with Pageant.
@@ -168,6 +164,8 @@ if ($OS =~ "Windows")
     set viminfo+=n$VIM/_viminfo
 endif
 
+" Show additional info in status line
+"set statusline=%F%m%r%h%w\ [TYPE:%Y\ %{&ff}\ %{&fenc}%{(&bomb?\"-BOM\":\"\")}]\ [SESSION:%{MySessionName()}]\ %=\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04v,%04l][%p%%]\ [LEN=%L]
 
 "=====================================================
 " Set own functions for Tab Labels and Tab Tooltips

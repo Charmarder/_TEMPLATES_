@@ -8,6 +8,7 @@ choco install python3 -y                    # Python 3.13.3 (35,464,505)
 choco install nodejs -y                     # Node JS 24.0.1 (5,726,052)
 choco install yarn -y                       # Yarn 1.22.22 (1,725,460)
 choco install jre8 -y                       # jre8 8.0.451 (35,138,740)
+choco install tortoisegit -y                # TortoiseGit 2.17.0.2 (1,005,782)
 
 choco install db-visualizer -y              # DbVisualizer 25.1.3 (90,975)
 choco install postman -y                    # Postman for Windows 11.40.5
